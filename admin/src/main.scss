@@ -1,0 +1,42 @@
+@import "@/lib/reset";  //引入scss的初始化文件
+
+html,body,#root,.container{
+    @include rect(100%,100%);    //width :  height :
+}
+
+.container{
+    @include flexbox();      //display : flex
+    @include flex-direction(column);  
+    .box{  //注意这前两个属性的书写顺序
+        @include flex();     //flex : 1
+        @include rect(100%,auto);
+        @include flexbox();
+        @include flex-direction(column);
+        .header{
+            @include background-color(#f66);
+            @include rect(100%,0.44rem);
+        }
+        .content{
+            @include flex();
+            @include rect(100%,auto);
+        }
+    }
+    .footer{
+        @include background-color(#222);
+        @include rect(100%,0.5rem);
+        @include flexbox();
+        a{
+            @include flex();
+            @include rect(auto,100%);
+            @include flexbox();
+            @include justify-content();
+            @include align-items();
+            @include text-color(#333);
+            &.active{         //&为父级选择器
+                @include text-color(#00afc7);
+            }
+        }
+        
+    }
+}
+
